@@ -301,6 +301,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Также при скролле
-window.addEventListener('scroll', function() {
-    initCounters();
-});
