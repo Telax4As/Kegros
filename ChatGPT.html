@@ -185,8 +185,275 @@
     </footer>
 
     <script>
-       
-
+        // Глобальные переменные
+        let currentSessionId = 'chat_' + Date.now();
+        let isAIOnline = false;
+        const API_URL = 'http://localhost:5000'; // Адрес твоего Flask сервера
+        
+        // Проверка подключения к серверу
+        async function checkServerConnection() {
+            try {
+                const response = await fetch(API_URL + '/api/status');
+                if (response.ok) {
+                    const data = await response.json();
+                    isAIOnline = data.ai_status === 'connected';
+                    console.log('✅ Сервер AI подключен:', data);
+                    return true;
+                }
+            } catch (error) {
+                console.log('❌ Сервер AI недоступен. Запусти Flask сервер!');
+                isAIOnline = false;
+            }
+            return false;
+        }
+        
+        
+        
+        // Создать элемент статуса
+        function createStatusElement() {
+            const statusDiv = document.createElement('div');
+            statusDiv.id = 'connectionStatus';
+            statusDiv.className = 'connection-status';
+            document.querySelector('.chat-header').appendChild(statusDiv);
+            return statusDiv;
+        }
+        
+        // Добавить сообщение в чат
+        function addMessage(text, isUser = false, showTime = true) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
+            
+            const time = showTime ? new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
+            
+            messageDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas ${isUser ? 'fa-user' : 'fa-robot'}"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">${text}</div>
+                    ${showTime ? `<div class="message-time">${time}</div>` : ''}
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return messageDiv;
+        }
+        
+        // Показать индикатор "печатает"
+        function showTypingIndicator() {
+            const chatMessages = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'message bot-message typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            
+            typingDiv.innerHTML = `
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <div class="message-text">
+                        <span class="typing-dots">
+                            <span>.</span><span>.</span><span>.</span>
+                        </span> KegrosAI печатает
+                    </div>
+                </div>
+            `;
+            
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+        
+        // Убрать индикатор "печатает"
+        function hideTypingIndicator() {
+            const typing = document.getElementById('typingIndicator');
+            if (typing) typing.remove();
+        }
+        
+        // Отправить сообщение к AI (основной метод)
+        async function sendToAI(message) {
+            if (!isAIOnline) {
+                // Демо-режим если сервер недоступен
+                return getDemoResponse(message);
+            }
+            
+            try {
+                // Используем endpoint /api/chat с поддержкой истории
+                const response = await fetch(API_URL + '/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        session_id: currentSessionId
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Ошибка сервера');
+                }
+                
+                const data = await response.json();
+                return data.response || data.answer;
+                
+            } catch (error) {
+                console.error('Ошибка AI:', error);
+                return `⚠️ <strong>Ошибка подключения к AI</strong><br><br>
+                        Не удалось подключиться к серверу AI.<br>
+                        <em>Для запуска сервера:</em><br>
+                        1. Убедись что запущен файл с Flask сервером<br>
+                        2. Проверь что порт 5000 свободен<br>
+                        3. Используй пока демо-ответы из быстрых вопросов`;
+            }
+        }
+        
+        // Демо-ответы когда сервер недоступен
+        function getDemoResponse(question) {
+            const demoResponses = {
+                "привет": `🎓 <strong>KegrosAI (KegrosKZ):</strong> Привет! Я AI-помощник для абитуриентов Казахстана. Помогу выбрать университет, подготовиться к поступлению и ответить на любые вопросы!`,
+                
+                "какие вузы есть": `🏫 <strong>На KegrosKZ представлены:</strong><br><br>
+                • <strong>Назарбаев Университет</strong> (9.8/10) - топ-1<br>
+                • <strong>КБТУ</strong> (8.2/10) - лучший технический<br>
+                • <strong>МУИТ/IITU</strong> (7.5/10) - IT-вуз №1<br>
+                • <strong>КазНУ им. Аль-Фараби</strong> (7.9/10)<br>
+                • <strong>ЕНУ им. Гумилева</strong> (7.3/10)<br>
+                • <strong>КазНИТУ им. Сатпаева</strong> (8.0/10)`,
+                
+                "как поступить в ну": `🎯 <strong>Поступление в НУ:</strong><br><br>
+                <strong>Сроки:</strong><br>
+                • Декабрь-Февраль: подача заявок<br>
+                • Март-Апрель: экзамены<br>
+                • Апрель-Май: собеседования<br>
+                • Июнь: результаты<br><br>
+                <strong>Требования:</strong><br>
+                • Аттестат 4.8+ GPA<br>
+                • SAT/ACT обязательно<br>
+                • IELTS 6.5+<br>
+                • Мотивационное письмо<br>
+                • 2 рекомендации`,
+                
+                "сколько стоит кбту": `💰 <strong>КБТУ - стоимость:</strong><br><br>
+                • Обучение: 2.5-3 млн тенге/год<br>
+                • Гранты: 25% на каждом факультете<br>
+                • Общежитие: 150,000-200,000 тенге/семестр<br>
+                • Доп. расходы: ~500,000 тенге/год<br><br>
+                <em>При высоких баллах ЕНТ можно получить грант!</em>`,
+                
+                "муит it": `💻 <strong>МУИТ (IITU) для IT:</strong><br><br>
+                • Рейтинг KegrosKZ: 7.5/10<br>
+                • Трудоустройство: 98% в IT<br>
+                • Зарплата выпускников: 1.2M тенге<br>
+                • Хакатоны: каждые 2 недели<br>
+                • Гранты: 30% бесплатного обучения<br>
+                • Стоимость: 2.8-3.5 млн/год<br><br>
+                <strong>Идеально для будущих программистов!</strong>`,
+                
+                "гранты 2025": `🏆 <strong>Гранты 2025:</strong><br><br>
+                <strong>Государственные:</strong><br>
+                • По баллам ЕНТ (120+)<br>
+                • Целевые от компаний<br>
+                • Международные "Болашак"<br><br>
+                <strong>По вузам:</strong><br>
+                • НУ: 80% мест на грантах<br>
+                • МУИТ: 30% грантов, 30% скидок<br>
+                • КБТУ: 25% грантов<br><br>
+                <strong>Стипендии:</strong><br>
+                • Президентская: 100,000 тенге/месяц<br>
+                • Правительственная: 50,000 тенге/месяц`
+            };
+            
+            const lowerQuestion = question.toLowerCase();
+            
+            // Ищем точное совпадение
+            if (demoResponses[lowerQuestion]) {
+                return demoResponses[lowerQuestion];
+            }
+            
+            // Ищем по ключевым словам
+            for (const [key, response] of Object.entries(demoResponses)) {
+                if (lowerQuestion.includes(key) && key.length > 3) {
+                    return response;
+                }
+            }
+            
+            // Общий ответ
+            /*return `🤖 <strong>АбитУм (демо-режим):</strong><br><br>
+                    Ваш вопрос: <em>"${question}"</em><br><br>
+                    В полной версии с Gemini AI я бы дал подробный анализ.<br><br>
+                    <strong>Попробуйте один из готовых вопросов:</strong><br>
+                    • "Какие вузы есть"<br>
+                    • "Как поступить в НУ"<br>
+                    • "Сколько стоит КБТУ"<br>
+                    • "МУИТ IT"<br>
+                    • "Гранты 2025"`;*/
+        }
+        
+        // Очистка чата на сервере
+        async function clearChatHistory() {
+            try {
+                await fetch(API_URL + '/api/clear', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({session_id: currentSessionId})
+                });
+            } catch (error) {
+                console.log('Сервер очистки недоступен');
+            }
+        }
+        
+        // Создание нового чата
+        async function createNewChat() {
+            try {
+                const response = await fetch(API_URL + '/api/new', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        clear_old: true
+                    })
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    currentSessionId = data.new_session_id;
+                    return currentSessionId;
+                }
+            } catch (error) {
+                // Если сервер недоступен, просто создаем новый ID
+                currentSessionId = 'chat_' + Date.now();
+            }
+            return currentSessionId;
+        }
+        
+        // Основная функция отправки сообщения
+        async function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value.trim();
+            
+            if (!message) return;
+            
+            // Добавляем сообщение пользователя
+            addMessage(message, true);
+            messageInput.value = '';
+            
+            // Показываем индикатор печати
+            showTypingIndicator();
+            
+            // Получаем ответ от AI
+            const aiResponse = await sendToAI(message);
+            
+            // Убираем индикатор и показываем ответ
+            hideTypingIndicator();
+            addMessage(aiResponse, false);
+            
+            // Фокус обратно на поле ввода
+            messageInput.focus();
+        }
+        
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             const chatMessages = document.getElementById('chatMessages');
             const messageInput = document.getElementById('messageInput');
@@ -195,174 +462,62 @@
             const newChatButton = document.getElementById('newChat');
             const quickButtons = document.querySelectorAll('.quick-btn');
             
-            // Демо-ответы AI
-            const demoResponses = {
-                "Какие IT-вузы в Казахстане лучшие?": `🏫 <strong>Лучшие IT-вузы Казахстана 2025:</strong>
-                
-🥇 <strong>МУИТ (IITU)</strong> - IT-специализированный
-• 98% трудоустройство в IT
-• Хакатоны каждые 2 недели
-• Зарплата выпускников: 1.2M тенге
-
-🥈 <strong>КБТУ</strong> - сильная IT-школа
-• Партнерства с IT-компаниями
-• Двойные дипломы
-
-🥉 <strong>Назарбаев Университет</strong>
-• Международные стандарты
-• Исследования в AI
-
-🎯 <strong>Для программирования:</strong> МУИТ > КБТУ > НУ`,
-                
-                "Как поступить в Назарбаев Университет?": `🎯 <strong>Поступление в НУ 2025:</strong>
-                
-📅 <strong>Дедлайны:</strong>
-• Декабрь-Февраль: заявки
-• Март-Апрель: экзамены
-• Апрель-Май: собеседования
-• Июнь: результаты
-
-📚 <strong>Что нужно:</strong>
-1. Аттестат 4.8+ GPA
-2. SAT/ACT обязательно
-3. IELTS 6.5+
-4. Мотивационное письмо
-5. 2 рекомендации
-
-💡 <strong>Секреты успеха:</strong>
-• Участие в олимпиадах
-• Исследовательские проекты
-• Лидерский опыт`,
-                
-                "Сколько стоят общежития в Алматы?": `🏠 <strong>Стоимость общежитий:</strong>
-                
-🏫 <strong>МУИТ:</strong> 150,000 тенге/семестр
-🏫 <strong>КБТУ:</strong> 150,000-200,000 тенге/семестр
-🏫 <strong>КазНУ:</strong> 50,000-80,000 тенге/семестр
-
-💡 <strong>Альтернативы:</strong>
-• Аренда квартиры: 150,000-300,000 тенге/месяц
-• Комнаты: 80,000-150,000 тенге/месяц`,
-                
-                "Какие гранты есть для 2025 года?": `🏆 <strong>Гранты 2025:</strong>
-                
-🎓 <strong>Государственные:</strong>
-• Общеобразовательные - по баллам ЕНТ
-• Целевые - от компаний
-• Международные - "Болашак"
-
-🏫 <strong>По вузам:</strong>
-• НУ: 80% мест на грантах
-• МУИТ: 30% грантов, 30% скидок
-• КБТУ: 25% грантов
-
-💰 <strong>Стипендии:</strong>
-• Президентская: 100,000 тенге/месяц
-• Правительственная: 50,000 тенге/месяц`
-            };
+            // Проверка подключения
+            checkServerConnection().then(() => {
+                updateConnectionStatus();
+            });
             
-            // Добавление сообщения
-            function addMessage(text, isUser = false) {
-                const messageDiv = document.createElement('div');
-                messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
-                
-                const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-                
-                messageDiv.innerHTML = `
-                    <div class="message-avatar">
-                        <i class="fas ${isUser ? 'fa-user' : 'fa-robot'}"></i>
-                    </div>
-                    <div class="message-content">
-                        <div class="message-text">${text}</div>
-                        <div class="message-time">${time}</div>
-                    </div>
-                `;
-                
-                chatMessages.appendChild(messageDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
+            // Обновляем статус каждые 30 секунд
+            setInterval(async () => {
+                await checkServerConnection();
+                updateConnectionStatus();
+            }, 30000);
             
-            // Ответ AI
-            function getAIResponse(question) {
-                if (demoResponses[question]) {
-                    return demoResponses[question];
-                }
-                
-                return `🤖 <strong>Отличный вопрос!</strong> По теме "${question}" я могу сказать:
-
-В полной версии AI-помощника с Google Gemini я бы:
-1. 📊 Проанализировал все данные о вузах
-2. 🏫 Подобрал конкретные варианты
-3. 💰 Рассчитал бюджет
-4. 📅 Составил план поступления
-
-💡 <strong>Совет:</strong> Уточни свои критерии:
-• Баллы ЕНТ
-• Бюджет на обучение  
-• Город
-• Специальность
-
-Так я смогу дать точные рекомендации! 🎯`;
-            }
-            
-            // Отправка сообщения
-            function sendMessage() {
-                const message = messageInput.value.trim();
-                if (!message) return;
-                
-                addMessage(message, true);
-                messageInput.value = '';
-                
-                // Имитация печати AI
-                const typingIndicator = document.createElement('div');
-                typingIndicator.className = 'message bot-message';
-                typingIndicator.innerHTML = `
-                    <div class="message-avatar">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="message-content">
-                        <div class="message-text" style="color: var(--gray-text);">
-                            <i class="fas fa-ellipsis-h"></i> AI печатает ответ...
-                        </div>
-                    </div>
-                `;
-                chatMessages.appendChild(typingIndicator);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-                
-                setTimeout(() => {
-                    typingIndicator.remove();
-                    const response = getAIResponse(message);
-                    addMessage(response);
-                }, 1000);
-            }
-            
-            // Быстрые кнопки
+            // Быстрые кнопки вопросов
             quickButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
+                btn.addEventListener('click', async function() {
                     const question = this.getAttribute('data-question');
                     messageInput.value = question;
-                    sendMessage();
+                    await sendMessage();
                 });
             });
             
             // Отправка по Enter
             messageInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') sendMessage();
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
+                }
             });
             
             // Отправка по кнопке
             sendButton.addEventListener('click', sendMessage);
             
             // Очистка чата
-            clearButton.addEventListener('click', function() {
+            clearButton.addEventListener('click', async function() {
+                // Очищаем на сервере
+                await clearChatHistory();
+                
+                // Очищаем на клиенте
                 const messages = chatMessages.querySelectorAll('.message:not(:first-child)');
                 messages.forEach(msg => msg.remove());
-                addMessage('💬 <strong>Чат очищен.</strong> Задайте новый вопрос!');
+                
+                // Показываем сообщение
+                addMessage('💬 <strong>Чат очищен.</strong> Задайте новый вопрос!', false);
+                
+                // Создаем новую сессию
+                currentSessionId = 'chat_' + Date.now();
             });
             
             // Новый чат
-            newChatButton.addEventListener('click', function() {
+            newChatButton.addEventListener('click', async function() {
+                // Создаем новый чат
+                await createNewChat();
+                
+                // Очищаем на клиенте
                 chatMessages.innerHTML = '';
+                
+                // Показываем приветствие
                 const welcomeMsg = document.createElement('div');
                 welcomeMsg.className = 'message bot-message';
                 welcomeMsg.innerHTML = `
@@ -371,17 +526,105 @@
                     </div>
                     <div class="message-content">
                         <div class="message-text">
-                            🎓 <strong>Новый чат начат!</strong> Я KegrosAI. Чем могу помочь?
+                            🎓 <strong>Новый чат начат!</strong> Я KegrosAI — AI-помощник от KegrosKZ.
+                        </div>
+                        <div class="message-text">
+                            Помогу с выбором университета, подготовкой к поступлению и любыми вопросами о вузах Казахстана!
+                        </div>
+                        <div class="message-text">
+                            💡 <strong>Спроси меня о:</strong><br>
+                            • Рейтингах университетов<br>
+                            • Стоимости обучения<br>
+                            • Грантах и стипендиях<br>
+                            • Процессе поступления<br>
+                            • Карьерных перспективах
                         </div>
                         <div class="message-time">Только что</div>
                     </div>
                 `;
                 chatMessages.appendChild(welcomeMsg);
+                
+                // Обновляем статус
+                updateConnectionStatus();
             });
             
-            // Фокус на поле ввода
+            // Автофокус на поле ввода
             messageInput.focus();
+            
+            // Добавляем CSS для индикатора печати
+            const style = document.createElement('style');
+            style.textContent = `
+                .typing-indicator .message-text {
+                    color: var(--gray-text);
+                    font-style: italic;
+                }
+                
+                .typing-dots {
+                    display: inline-block;
+                }
+                
+                .typing-dots span {
+                    animation: typingDot 1.4s infinite;
+                    opacity: 0.3;
+                }
+                
+                .typing-dots span:nth-child(1) { animation-delay: 0s; }
+                .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+                .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+                
+                @keyframes typingDot {
+                    0%, 100% { opacity: 0.3; }
+                    50% { opacity: 1; }
+                }
+                
+                .connection-status {
+                    position: absolute;
+                    right: 20px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding: 5px 12px;
+                    border-radius: 15px;
+                    font-size: 0.8rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 6px;
+                }
+                
+                .connection-status.connected {
+                    background: rgba(0, 255, 65, 0.1);
+                    color: var(--eva-green);
+                    border: 1px solid var(--eva-green);
+                }
+                
+                .connection-status.disconnected {
+                    background: rgba(255, 68, 68, 0.1);
+                    color: #ff4444;
+                    border: 1px solid #ff4444;
+                }
+                
+                .connection-status .status-indicator {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+                
+                .chat-header {
+                    position: relative;
+                }
+            `;
+            document.head.appendChild(style);
         });
+        
+        // Экспортируем функции для отладки
+        window.chatFunctions = {
+            sendMessage,
+            clearChatHistory,
+            createNewChat,
+            checkServerConnection,
+            get currentSessionId() { return currentSessionId; },
+            get isAIOnline() { return isAIOnline; }
+        };
     </script>
 </body>
 </html>

@@ -1656,3 +1656,46 @@ body {
     font-size: 0.8rem;
     opacity: 0.8;
 }
+
+/* Индикатор печатания AI */
+.typing-indicator .message-text {
+    color: var(--gray-text);
+    font-style: italic;
+}
+
+.typing-indicator .fa-ellipsis-h {
+    animation: typing-dots 1.5s infinite;
+}
+
+@keyframes typing-dots {
+    0%, 20% { opacity: 0.2; }
+    50% { opacity: 1; }
+    100% { opacity: 0.2; }
+}
+
+/* Статус подключения */
+.connection-status {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.connection-status.connected {
+    background: rgba(0, 255, 65, 0.2);
+    color: var(--eva-green);
+    border: 1px solid var(--eva-green);
+}
+
+.connection-status.disconnected {
+    background: rgba(255, 0, 0, 0.2);
+    color: #ff4444;
+    border: 1px solid #ff4444;
+}
+

@@ -300,4 +300,3 @@ document.addEventListener('DOMContentLoaded', function() {
     initHeroStats();
 });
 
-// Также при скролле
