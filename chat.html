@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniKZ | AI-Помощник для абитуриентов</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="chat.html" class="nav-link active"><i class="fas fa-robot"></i> AI-Помощник</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> О проекте</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title glitch" data-text="AI-ПОМОЩНИК">AI-ПОМОЩНИК</h1>
+                <p class="hero-subtitle">Абит<span class="highlight">Ум</span> — твой персональный гид по поступлению</p>
+                <p class="hero-desc">Искусственный интеллект, который ответит на все вопросы о вузах Казахстана. 24/7 помощь в выборе университета, подготовке к ЕНТ и поступлении.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">студентам помог</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24 / 7</div>
+                        <div class="stat-label">работает</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">точность ответов</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="ai-avatar">
+                    <div class="avatar-circle">
+                        <i class="fas fa-robot"></i>
+                        <div class="pulse-ring"></div>
+                        <div class="pulse-ring delay-1"></div>
+                        <div class="pulse-ring delay-2"></div>
+                    </div>
+                    <h3 style="color: var(--eva-green); margin-top: 20px;">Абит<span class="highlight">Ум</span></h3>
+                    <p style="color: var(--eva-cyan);">AI-помощник онлайн</p>
+                </div>
+            </div>
+        </div>
+        <div class="pulse-orb orb-1"></div>
+        <div class="pulse-orb orb-2"></div>
+    </section>
+
+    <!-- Основной чат -->
+    <div class="container" style="margin-top: 50px; margin-bottom: 100px;">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-bot-info">
+                    <div class="bot-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--eva-cyan); margin: 0;">Абит<span class="highlight">Ум</span></h3>
+                        <p class="bot-status"><span class="status-indicator"></span> Онлайн • Отвечает мгновенно</p>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <button class="btn btn-small" id="clearChat">
+                        <i class="fas fa-trash"></i> Очистить чат
+                    </button>
+                    <button class="btn btn-small btn-primary" id="newChat">
+                        <i class="fas fa-plus"></i> Новый чат
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-messages" id="chatMessages">
+                <!-- Приветственное сообщение -->
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            🎓 <strong>Привет! Я АбитУм — твой AI-помощник для поступления в вузы Казахстана!</strong>
+                        </div>
+                        <div class="message-text">
+                            Я могу помочь тебе с:
+                            <br>• 🤔 <strong>Выбором университета</strong> по интересам и баллам
+                            <br>• 📝 <strong>Подготовкой к поступлению</strong> и ЕНТ
+                            <br>• 💰 <strong>Финансовыми вопросами</strong> (гранты, стипендии, стоимость)
+                            <br>• 🏠 <strong>Жизнью студентов</strong> (общежития, кампус, внеучебка)
+                            <br>• 🎯 <strong>Конкретными вузами</strong> (НУ, КБТУ, МУИТ и другие)
+                        </div>
+                        <div class="message-text">
+                            💡 <strong>Просто задай свой вопрос ниже!</strong> Например:
+                            <br>"Какие IT-вузы в Алматы?"
+                            <br>"Как получить грант в НУ?"
+                            <br>"Сравни КБТУ и МУИТ для программирования"
+                        </div>
+                        <div class="message-time">Только что</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input-area">
+                <div class="quick-questions">
+                    <span style="color: var(--gray-text); margin-right: 10px;">Быстрые вопросы:</span>
+                    <button class="quick-btn" data-question="Какие IT-вузы в Казахстане лучшие?">
+                        <i class="fas fa-laptop-code"></i> IT-вузы
+                    </button>
+                    <button class="quick-btn" data-question="Как поступить в Назарбаев Университет?">
+                        <i class="fas fa-university"></i> Поступление в НУ
+                    </button>
+                    <button class="quick-btn" data-question="Сколько стоят общежития в Алматы?">
+                        <i class="fas fa-bed"></i> Общежития
+                    </button>
+                    <button class="quick-btn" data-question="Какие гранты есть для 2024 года?">
+                        <i class="fas fa-award"></i> Гранты
+                    </button>
+                </div>
+                
+                <div class="input-wrapper">
+                    <input type="text" id="messageInput" placeholder="Напиши свой вопрос здесь... (например: 'Помоги выбрать вуз для программирования')">
+                    <button id="sendMessage" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Отправить
+                    </button>
+                </div>
+                
+                <div class="input-hint">
+                    <i class="fas fa-info-circle"></i> AI-помощник анализирует информацию о всех университетах Казахстана
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="about" class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+                    </a>
+                    <p>AI-помощник для абитуриентов Казахстана.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="index.html">Главная страница</a></li>
+                        <li><a href="nu.html">Назарбаев Университет</a></li>
+                        <li><a href="kbtu.html">КБТУ</a></li>
+                        <li><a href="iitu.html">МУИТ/IITU</a></li>
+                        <li><a href="chat.html">AI-Помощник</a></li>
+                    </ul>
+                </div>
+                <div class="footer-cta">
+                    <h4>Нужна помощь?</h4>
+                    <p>AI-помощник доступен 24/7 для ответов на ваши вопросы.</p>
+                    <a href="#chatMessages" class="btn btn-primary">НАЧАТЬ ОБЩЕНИЕ <i class="fas fa-comment-alt"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 UniKZ. AI-Помощник для абитуриентов Казахстана.</p>
+                <p>Проект находится в активной разработке.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ФИКС СКРОЛЛА - убираем якорь при загрузке
+        if (window.location.hash) {
+            history.replaceState(null, null, ' ');
+            setTimeout(() => window.scrollTo(0, 0), 10);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageInput = document.getElementById('messageInput');
+            const sendButton = document.getElementById('sendMessage');
+            const clearButton = document.getElementById('clearChat');
+            const newChatButton = document.getElementById('newChat');
+            const quickButtons = document.querySelectorAll('.quick-btn');
+            
+            // Демо-ответы AI
+            const demoResponses = {
+                "Какие IT-вузы в Казахстане лучшие?": `🏫 <strong>Лучшие IT-вузы Казахстана 2024:</strong>
+                
+🥇 <strong>МУИТ (IITU)</strong> - IT-специализированный
+• 98% трудоустройство в IT
+• Хакатоны каждые 2 недели
+• Зарплата выпускников: 1.2M тенге
+
+🥈 <strong>КБТУ</strong> - сильная IT-школа
+• Партнерства с IT-компаниями
+• Двойные дипломы
+
+🥉 <strong>Назарбаев Университет</strong>
+• Международные стандарты
+• Исследования в AI
+
+🎯 <strong>Для программирования:</strong> МУИТ > КБТУ > НУ`,
+                
+                "Как поступить в Назарбаев Университет?": `🎯 <strong>Поступление в НУ 2024:</strong>
+                
+📅 <strong>Дедлайны:</strong>
+• Декабрь-Февраль: заявки
+• Март-Апрель: экзамены
+• Апрель-Май: собеседования
+• Июнь: результаты
+
+📚 <strong>Что нужно:</strong>
+1. Аттестат 4.8+ GPA
+2. SAT/ACT обязательно
+3. IELTS 6.5+
+4. Мотивационное письмо
+5. 2 рекомендации
+
+💡 <strong>Секреты успеха:</strong>
+• Участие в олимпиадах
+• Исследовательские проекты
+• Лидерский опыт`,
+                
+                "Сколько стоят общежития в Алматы?": `🏠 <strong>Стоимость общежитий:</strong>
+                
+🏫 <strong>МУИТ:</strong> 150,000 тенге/семестр
+🏫 <strong>КБТУ:</strong> 150,000-200,000 тенге/семестр
+🏫 <strong>КазНУ:</strong> 50,000-80,000 тенге/семестр
+
+💡 <strong>Альтернативы:</strong>
+• Аренда квартиры: 150,000-300,000 тенге/месяц
+• Комнаты: 80,000-150,000 тенге/месяц`,
+                
+                "Какие гранты есть для 2024 года?": `🏆 <strong>Гранты 2024:</strong>
+                
+🎓 <strong>Государственные:</strong>
+• Общеобразовательные - по баллам ЕНТ
+• Целевые - от компаний
+• Международные - "Болашак"
+
+🏫 <strong>По вузам:</strong>
+• НУ: 80% мест на грантах
+• МУИТ: 30% грантов, 30% скидок
+• КБТУ: 25% грантов
+
+💰 <strong>Стипендии:</strong>
+• Президентская: 100,000 тенге/месяц
+• Правительственная: 50,000 тенге/месяц`
+            };
+            
+            // Добавление сообщения
+            function addMessage(text, isUser = false) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = isUser ? 'message user-message' : 'message bot-message';
+                
+                const time = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+                
+                messageDiv.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas ${isUser ? 'fa-user' : 'fa-robot'}"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">${text}</div>
+                        <div class="message-time">${time}</div>
+                    </div>
+                `;
+                
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            // Ответ AI
+            function getAIResponse(question) {
+                if (demoResponses[question]) {
+                    return demoResponses[question];
+                }
+                
+                return `🤖 <strong>Отличный вопрос!</strong> По теме "${question}" я могу сказать:
+
+В полной версии AI-помощника с Google Gemini я бы:
+1. 📊 Проанализировал все данные о вузах
+2. 🏫 Подобрал конкретные варианты
+3. 💰 Рассчитал бюджет
+4. 📅 Составил план поступления
+
+💡 <strong>Совет:</strong> Уточни свои критерии:
+• Баллы ЕНТ
+• Бюджет на обучение  
+• Город
+• Специальность
+
+Так я смогу дать точные рекомендации! 🎯`;
+            }
+            
+            // Отправка сообщения
+            function sendMessage() {
+                const message = messageInput.value.trim();
+                if (!message) return;
+                
+                addMessage(message, true);
+                messageInput.value = '';
+                
+                // Имитация печати AI
+                const typingIndicator = document.createElement('div');
+                typingIndicator.className = 'message bot-message';
+                typingIndicator.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text" style="color: var(--gray-text);">
+                            <i class="fas fa-ellipsis-h"></i> AI печатает ответ...
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingIndicator);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                setTimeout(() => {
+                    typingIndicator.remove();
+                    const response = getAIResponse(message);
+                    addMessage(response);
+                }, 1000);
+            }
+            
+            // Быстрые кнопки
+            quickButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const question = this.getAttribute('data-question');
+                    messageInput.value = question;
+                    sendMessage();
+                });
+            });
+            
+            // Отправка по Enter
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+            
+            // Отправка по кнопке
+            sendButton.addEventListener('click', sendMessage);
+            
+            // Очистка чата
+            clearButton.addEventListener('click', function() {
+                const messages = chatMessages.querySelectorAll('.message:not(:first-child)');
+                messages.forEach(msg => msg.remove());
+                addMessage('💬 <strong>Чат очищен.</strong> Задайте новый вопрос!');
+            });
+            
+            // Новый чат
+            newChatButton.addEventListener('click', function() {
+                chatMessages.innerHTML = '';
+                const welcomeMsg = document.createElement('div');
+                welcomeMsg.className = 'message bot-message';
+                welcomeMsg.innerHTML = `
+                    <div class="message-avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-text">
+                            🎓 <strong>Новый чат начат!</strong> Я АбитУм. Чем могу помочь?
+                        </div>
+                        <div class="message-time">Только что</div>
+                    </div>
+                `;
+                chatMessages.appendChild(welcomeMsg);
+            });
+            
+            // Фокус на поле ввода
+            messageInput.focus();
+        });
+    </script>
+</body>
+</html>
