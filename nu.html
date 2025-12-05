@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniKZ | Назарбаев Университет</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="index.html" class="logo"> <!-- Вот тут поменял -->
+                <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> На главную</a></li> <!-- И тут -->
+                <li><a href="#about" class="nav-link"><i class="fas fa-university"></i> Об Университете</a></li>
+                <li><a href="#schools" class="nav-link"><i class="fas fa-atom"></i> Школы</a></li>
+                <li><a href="#admission" class="nav-link"><i class="fas fa-file-signature"></i> Поступление</a></li>
+                <li><a href="#secrets" class="nav-link"><i class="fas fa-user-secret"></i> Секреты</a></li>
+                <li><a href="#contacts" class="nav-link"><i class="fas fa-phone"></i> Контакты</a></li>
+            </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title glitch" data-text="НАЗАРБАЕВ УНИВЕРСИТЕТ">НАЗАРБАЕВ УНИВЕРСИТЕТ</h1>
+                <p class="hero-subtitle">Выше границ. Быстрее будущего.</p>
+                <p class="hero-desc">Первый и ведущий исследовательский университет Казахстана, где создают инновации, ломают стереотипы и готовят лидеров нового поколения.</p>
+                <div class="hero-buttons">
+                    <a href="#admission" class="btn btn-primary">ШТУРМОВАТЬ ПОСТУПЛЕНИЕ <i class="fas fa-rocket"></i></a>
+                    <a href="#secrets" class="btn btn-secondary">СКРЫТАЯ ИНФОРМАЦИЯ <i class="fas fa-eye"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Кампус Назарбаев Университета">
+                    <div class="scan-line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pulse-orb orb-1"></div>
+        <div class="pulse-orb orb-2"></div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-dna"></i></span> КОД <span class="highlight">НУ</span></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-flask"></i></div>
+                    <h3>Миссия</h3>
+                    <p>Создание и распространение знаний через исследования и образование, чтобы способствовать развитию Казахстана и мира.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Рейтинги</h3>
+                    <p>Первый в Казахстане и среди молодых университетов Центральной Азии. Входит в топ-30 молодых университетов мира (THE).</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3>Международность</h3>
+                    <p>Обучение на английском языке. Преподаватели и исследователи из более чем 40 стран. Партнёрства с ведущими мировыми вузами.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>Реальная подготовка</h3>
+                    <p>С первого курса — доступ к современнейшим лабораториям и проектам с реальными компаниями (Shell, Samsung, BI Group и др.).</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" data-target="12000">0</div>
+                    <div class="stat-label">Студентов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="500">0</div>
+                    <div class="stat-label">Докторов PhD</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-label">Стран мира</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="95">0</div>
+                    <div class="stat-label">% выпускников трудоустраивается</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schools" class="section schools-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-cogs"></i></span> ШКОЛЫ & <span class="highlight">ИНСТИТУТЫ</span></h2>
+            <p class="section-subtitle">Выберите свою область синхронизации (обучения).</p>
+
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="shss">SHSS</button>
+                    <button class="tab-btn" data-tab="sse">SSE</button>
+                    <button class="tab-btn" data-tab="seng">SENG</button>
+                    <button class="tab-btn" data-tab="smg">SMG</button>
+                    <button class="tab-btn" data-tab="gsp">GSP</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="shss">
+                        <h3>Школа гуманитарных и социальных наук</h3>
+                        <p><strong>Программы:</strong> BA в политологии, социологии, антропологии, истории, экономике.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Здесь самый высокий конкурс на грант. Сильнейшие эссе и рекомендации решают. Участие в дебатах или Model UN — огромный плюс.</p>
+                    </div>
+                    <div class="tab-pane" id="sse">
+                        <h3>Школа наук и технологий</h3>
+                        <p><strong>Программы:</strong> Биология, Химия, Физика, Математика, Робототехника.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Победы на республиканских олимпиадах — почти гарантированный пропуск. Но даже без них можно пройти, если показать глубокий исследовательский интерес в мотивационном письме.</p>
+                    </div>
+                    <div class="tab-pane" id="seng">
+                        <h3>Школа инженерии</h3>
+                        <p><strong>Программы:</strong> Химическая, Гражданская, Электрическая, Механическая инженерия.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Нужны не только оценки по математике/физике, но и опыт (кружок, собственный проект, Arduino). Комиссия ищет "инженерное мышление".</p>
+                    </div>
+                    <div class="tab-pane" id="smg">
+                        <h3>Высшая школа бизнеса</h3>
+                        <p><strong>Программы:</strong> Бакалавриат по бизнесу, MBA, Executive MBA.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Опыт предпринимательства (даже маленький магазин в инсте) или лидерства в проектах ценится выше идеального GPA.</p>
+                    </div>
+                    <div class="tab-pane" id="gsp">
+                        <h3>Подготовительная школа (Foundation Year)</h3>
+                        <p><strong>Программа:</strong> Годичная интенсивная подготовка по английскому и предметам.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Это НЕ "проходной двор". Отсев после Foundation — до 15%. Нужно быть готовым к нагрузке в 2-3 раза выше, чем в школе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission" class="section admission-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-shield-alt"></i></span> АКТИВАЦИЯ <span class="highlight">(ПОСТУПЛЕНИЕ)</span></h2>
+            <p class="section-subtitle">Порядок синхронизации с системой НУ. Будьте готовы.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-step">1</div>
+                    <div class="timeline-content">
+                        <h3>Онлайн-заявка (Декабрь-Февраль)</h3>
+                        <p><strong>Секрет:</strong> Не оставляйте на последний день! Система может быть перегружена. Начните заполнять за 2 недели до дедлайна.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">2</div>
+                    <div class="timeline-content">
+                        <h3>Вступительные экзамены (Март-Апрель)</h3>
+                        <p><strong>Секрет:</strong> SAT/ACT важны, но профильные предметные тесты НУ (мат., физ./хим./био) решают ВСЁ. Решайте прошлогодние варианты — много повторяется.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">3</div>
+                    <div class="timeline-content">
+                        <h3>Собеседование (Апрель-Май)</h3>
+                        <p><strong>Секрет:</strong> Это не экзамен, а проверка "совместимости". Задают неудобные вопросы. Искренность и страсть к предмету > заученные ответы.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">4</div>
+                    <div class="timeline-content">
+                        <h3>Результаты и зачисление (Июнь-Июль)</h3>
+                        <p><strong>Секрет:</strong> Если дали условное зачисление (conditional offer) — не расслабляйтесь. Нужно подтвердить оценки аттестата. Каждый год кто-то "вылетает" на этом этапе.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="secrets" class="section secrets-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-user-secret"></i></span> ЧТО НЕ ПИШУТ <span class="highlight">В БРОШЮРАХ</span></h2>
+            <div class="secrets-grid">
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Стипендии и расходы</h3>
+                    <p>Грант покрывает tuition fee, но не всегда проживание (около 3000$ в год). Стипендии за GPA сложно удержать — конкуренция бешеная. Много подработок в кампусе (лабы, админ работа).</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-users"></i></div>
+                    <h3>Сообщество и атмосфера</h3>
+                    <p>Очень маленькие группы (15-20 человек). Преподы знают всех по имени. Давление высокое, конкуренция здоровая. Выгорание — реальная проблема на 2-3 курсе.</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-building"></i></div>
+                    <h3>Кампус и быт</h3>
+                    <p>Общаги — как 4-звездочный отель, но правила строгие (комендантский час, проверки). Еда в столовой дороговата, но рядом есть дешевые столовые для строителей с офигенным пловом.</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Карьера после НУ</h3>
+                    <p>Диплом НУ — "магическая бумажка" в Казахстане. Выпускники уезжают в магистратуры Top-100 мира или получают офферы в 2-3 раза выше рынка. Но в РФ и других странах СНГ про НУ почти не знают.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-satellite-dish"></i></span> УСТАНОВИТЬ <span class="highlight">СВЯЗЬ</span></h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Казахстан, Астана</h3>
+                            <p>пр. Кабанбай батыра 53</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Приёмная комиссия</h3>
+                            <p>+7 (7172) 70-66-55</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p>admissions@nu.edu.kz</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Запрос на синхронизацию</h3>
+                    <form id="sync-form">
+                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="email" placeholder="Email" required>
+                        <select required>
+                            <option value="" disabled selected>Выберите школу</option>
+                            <option value="SHSS">SHSS</option>
+                            <option value="SSE">SSE</option>
+                            <option value="SENG">SENG</option>
+                            <option value="SMG">SMG</option>
+                        </select>
+                        <textarea placeholder="Ваше сообщение или вопрос..." rows="4"></textarea>
+                        <button type="submit" class="btn btn-primary">ОТПРАВИТЬ СИГНАЛ <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+                    </a>
+                    <p>Исчерпывающая информация об университетах Казахстана для будущих пилотов образования.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="#hero">Главная</a></li>
+                        <li><a href="#about">О НУ</a></li>
+                        <li><a href="#schools">Школы</a></li>
+                        <li><a href="#admission">Поступление</a></li>
+                        <li><a href="#secrets">Секреты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-cta">
+                    <h4>Готовы к синхронизации?</h4>
+                    <p>Начните свой путь к вершине образования сегодня.</p>
+                    <a href="#admission" class="btn btn-primary">НАЧАТЬ ШТУРМ <i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 UniKZ. Все данные защищены. Это неофициальный информационный ресурс.</p>
+                <p>Дизайн вдохновлён Evangelion Unit-01</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

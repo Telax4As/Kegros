@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniKZ | КБТУ - Казахстанско-Британский Технический Университет</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> На главную</a></li>
+                    <li><a href="#about" class="nav-link active"><i class="fas fa-university"></i> Об Университете</a></li>
+                    <li><a href="#faculties" class="nav-link"><i class="fas fa-atom"></i> Факультеты</a></li>
+                    <li><a href="#admission" class="nav-link"><i class="fas fa-file-signature"></i> Поступление</a></li>
+                    <li><a href="#secrets" class="nav-link"><i class="fas fa-user-secret"></i> Секреты</a></li>
+                    <li><a href="#contacts" class="nav-link"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title glitch" data-text="КБТУ">КБТУ</h1>
+                <p class="hero-subtitle">Казахстанско-Британский Технический Университет</p>
+                <p class="hero-desc">Первый технический вуз Казахстана с британскими стандартами. Где инженерия встречает инновации, а нефтянка сливается с IT.</p>
+                <div class="hero-buttons">
+                    <a href="#admission" class="btn btn-primary">ПОСТУПИТЬ В КБТУ <i class="fas fa-bolt"></i></a>
+                    <a href="#secrets" class="btn btn-secondary">РЕАЛЬНЫЕ ОТЗЫВЫ <i class="fas fa-comment-dots"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Корпус КБТУ">
+                    <div class="scan-line"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pulse-orb orb-1"></div>
+        <div class="pulse-orb orb-2"></div>
+    </section>
+
+    <section id="about" class="section about-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-oil-can"></i></span> СИЛА <span class="highlight">КБТУ</span></h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-industry"></i></div>
+                    <h3>Нефтегазовый гигант</h3>
+                    <p>Лучшая нефтегазовая школа в СНГ. Партнёрство с Shell, Chevron, KMG. 90% выпускников работают в ТОП-нефтяных компаниях.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>IT-Мекка</h3>
+                    <p>Факультет IT и AI — второй по престижности после нефтянки. Выпускники в Google, Amazon, EPAM, One Technologies.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Британский диплом</h3>
+                    <p>Двойные дипломы с University of London, University of Aberdeen. Европейское признание без выезда из Казахстана.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>100% практика</h3>
+                    <p>С 3 курса — обязательные стажировки на производствах. Лаборатории как на реальных нефтяных платформах.</p>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number" data-target="8000">0</div>
+                    <div class="stat-label">Студентов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="92">0</div>
+                    <div class="stat-label">% трудоустройства</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="300">0</div>
+                    <div class="stat-label">Компаний-партнёров</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" data-target="85">0</div>
+                    <div class="stat-label">% практических занятий</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faculties" class="section schools-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-cogs"></i></span> ФАКУЛЬТЕТЫ <span class="highlight">КБТУ</span></h2>
+            <p class="section-subtitle">Выберите свою техническую специализацию</p>
+
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="oil">Нефтегаз</button>
+                    <button class="tab-btn" data-tab="it">IT & AI</button>
+                    <button class="tab-btn" data-tab="chemical">Химическая инж.</button>
+                    <button class="tab-btn" data-tab="marine">Морская техника</button>
+                    <button class="tab-btn" data-tab="business">Бизнес-тех</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="oil">
+                        <h3>Нефтегазовое дело и инженерия</h3>
+                        <p><strong>Программы:</strong> Разработка нефтяных месторождений, Бурение, Геология, Геофизика, Нефтехимия.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Самый высокий проходной балл. Нужна не только математика/физика, но и химия. Победы в олимпиадах по химии — огромный плюс.</p>
+                        <p><strong>Зарплата выпускника:</strong> 800-1500к KZT в месяц (начальная).</p>
+                    </div>
+                    <div class="tab-pane" id="it">
+                        <h3>Информационные технологии и Искусственный интеллект</h3>
+                        <p><strong>Программы:</strong> Computer Science, Data Science, Cybersecurity, Software Engineering, AI.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Портфолио проектов на GitHub важнее оценок. Свой пет-проект или участие в хакатоне даёт +50% к шансам.</p>
+                        <p><strong>Зарплата выпускника:</strong> 600-1200к KZT в месяц (начальная).</p>
+                    </div>
+                    <div class="tab-pane" id="chemical">
+                        <h3>Химическая инженерия</h3>
+                        <p><strong>Программы:</strong> Химическая технология, Биотехнология, Фармацевтическая инженерия.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Меньший конкурс, чем на нефтянку, но такие же высокие зарплаты. Лаборатории мирового уровня.</p>
+                    </div>
+                    <div class="tab-pane" id="marine">
+                        <h3>Морская техника и технологии</h3>
+                        <p><strong>Программы:</strong> Судостроение, Оффшорные конструкции, Подводная робототехника.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Единственный такой факультет в Казахстане. 100% гарантия трудоустройства в KMG, Shell, North Caspian.</p>
+                    </div>
+                    <div class="tab-pane" id="business">
+                        <h3>Бизнес-технологии</h3>
+                        <p><strong>Программы:</strong> Технологическое предпринимательство, IT-менеджмент, Цифровая экономика.</p>
+                        <p><strong>Секрет для абитуриента:</strong> Идеально для тех, кто хочет совместить технику с бизнесом. Много проектов с реальными стартапами.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="admission" class="section admission-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-shield-alt"></i></span> ПОСТУПЛЕНИЕ <span class="highlight">В КБТУ</span></h2>
+            <p class="section-subtitle">Два пути: грант и платное. Оба требуют подготовки.</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-step">1</div>
+                    <div class="timeline-content">
+                        <h3>ЕНТ/КТЛ (Июнь)</h3>
+                        <p><strong>Для гранта:</strong> Нужно 120+ баллов (из 140). Математика и физика/химия должны быть идеальными.</p>
+                        <p><strong>Секрет:</strong> КТЛ даёт преимущество. Выпускники КТЛ имеют отдельную квоту на гранты КБТУ.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">2</div>
+                    <div class="timeline-content">
+                        <h3>Внутренние экзамены (Июль)</h3>
+                        <p><strong>Формат:</strong> Математика + профильный предмет (физика/химия/информатика). Сложнее, чем ЕНТ.</p>
+                        <p><strong>Секрет:</strong> Можно сдавать несколько профильных предметов для увеличения шансов на разные факультеты.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">3</div>
+                    <div class="timeline-content">
+                        <h3>Собеседование (Июль)</h3>
+                        <p><strong>Для IT и нефтянки:</strong> Техническое интервью. Могут дать решить задачу на доске.</p>
+                        <p><strong>Секрет:</strong> Спрашивают про хобби и проекты. Интересуются, почему именно КБТУ, а не НУ или зарубеж.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-step">4</div>
+                    <div class="timeline-content">
+                        <h3>Результаты (Август)</h3>
+                        <p><strong>Грант:</strong> 25% мест на каждом факультете. Конкурс 10+ человек на место.</p>
+                        <p><strong>Стоимость обучения:</strong> 2.5-4 млн KZT в год. Есть скидки за хорошую успеваемость.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="secrets" class="section secrets-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-user-secret"></i></span> ЧТО НЕ ГОВОРЯТ <span class="highlight">НА ДНЯХ ОТКРЫТЫХ ДВЕРЕЙ</span></h2>
+            <div class="secrets-grid">
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-users"></i></div>
+                    <h3>Культура "старшей школы"</h3>
+                    <p>Жёсткая иерархия: преподаватели — боги, старшекурсники — полубоги. Первокурсников "гоняют". Но это сплачивает и даёт дисциплину.</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-building"></i></div>
+                    <h3>Кампус и общежития</h3>
+                    <p>Главный корпус — историческое здание, но внутри современные лаборатории. Общежития только для иногородних, условия спартанские.</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-handshake"></i></div>
+                    <h3>Блат и связи</h3>
+                    <p>В нефтянке часто поступают дети сотрудников KMG, NCOC. Но в IT всё честно — только знания. Знакомства здесь решают больше, чем оценки.</p>
+                </div>
+                <div class="secret-card">
+                    <div class="secret-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>После диплома</h3>
+                    <p>Диплом КБТУ — пропуск в любую нефтяную компанию Казахстана. Но для работы за рубежом нужна магистратура на Западе.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="logo-text">Uni<span class="logo-highlight">KZ</span></span>
+                    </a>
+                    <p>Аналитика по всем университетам Казахстана от сообщества студентов и выпускников.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Другие университеты</h4>
+                    <ul>
+                        <li><a href="nu.html">Назарбаев Университет</a></li>
+                        <li><a href="kbtu.html" class="active">КБТУ</a></li>
+                        <li><a href="mait.html">МУИТ (Almaty Management)</a></li>
+                        <li><a href="kaznu.html">КазНУ им. Аль-Фараби</a></li>
+                        <li><a href="enu.html">ЕНУ им. Гумилева</a></li>
+                    </ul>
+                </div>
+                <div class="footer-cta">
+                    <h4>Остались вопросы по КБТУ?</h4>
+                    <p>Задайте их в нашем Telegram-чате абитуриентов.</p>
+                    <a href="#" class="btn btn-primary">ПЕРЕЙТИ В ЧАТ <i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 UniKZ. Это неофициальный информационный ресурс.</p>
+                <p>Все данные основаны на отзывах студентов 2020-2024 годов.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

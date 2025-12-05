@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniKZ | Все университеты Казахстана</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                    <span class="logo-text">Kegros<span class="logo-highlight">KZ</span></span>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="#universities" class="nav-link"><i class="fas fa-university"></i> Университеты</a></li>
+                    <li><a href="#rating" class="nav-link"><i class="fas fa-chart-line"></i> Рейтинг</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> О проекте</a></li>
+                    <li><a href="#contacts" class="nav-link"><i class="fas fa-phone"></i> Контакты</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title glitch" data-text="ВСЕ УНИВЕРСИТЕТЫ КАЗАХСТАНА">ВСЕ УНИВЕРСИТЕТЫ КАЗАХСТАНА</h1>
+                <p class="hero-subtitle">Полная база. Скрытые факты. Реальные отзывы.</p>
+                <p class="hero-desc">Информация, которую не найдёшь на официальных сайтах. Рейтинги, секреты поступления, атмосфера в общежитиях, уровень преподавания — всё, что нужно абитуриенту 2024.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">120+</div>
+                        <div class="stat-label">Университетов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Отзывов</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Уникальной информации</div>
+                    </div>
+                </div>
+                <a href="#universities" class="btn btn-primary">НАЙТИ СВОЙ УНИВЕР <i class="fas fa-search"></i></a>
+            </div>
+            <div class="hero-image">
+                <div class="floating-cards">
+                    <div class="card card-1">
+                        <i class="fas fa-user-secret"></i>
+                        <h3>Скрытая информация</h3>
+                    </div>
+                    <div class="card card-2">
+                        <i class="fas fa-chart-bar"></i>
+                        <h3>Реальные рейтинги</h3>
+                    </div>
+                    <div class="card card-3">
+                        <i class="fas fa-comments"></i>
+                        <h3>Честные отзывы</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pulse-orb orb-1"></div>
+        <div class="pulse-orb orb-2"></div>
+    </section>
+
+    <section id="universities" class="section universities-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-atom"></i></span> БАЗА <span class="highlight">УНИВЕРСИТЕТОВ</span></h2>
+            <p class="section-subtitle">Выберите университет для полного анализа</p>
+            
+            <div class="search-box">
+                <input type="text" id="uni-search" placeholder="Начните вводить название университета...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="top">Топовые</button>
+                <button class="filter-btn" data-filter="state">Государственные</button>
+                <button class="filter-btn" data-filter="private">Частные</button>
+                <button class="filter-btn" data-filter="tech">Технические</button>
+                <button class="filter-btn" data-filter="human">Гуманитарные</button>
+            </div>
+
+            <div class="universities-grid">
+                <a href="nu.html" class="university-card" data-category="top state">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">NU</div>
+                        <div class="uni-rating">9.8</div>
+                    </div>
+                    <h3 class="uni-name">Назарбаев Университет</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Астана</p>
+                    <p class="uni-desc">Ведущий исследовательский университет. Самый высокий конкурс. Международные стандарты.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-top">Топ-1</span>
+                        <span class="tag tag-international">Международный</span>
+                        <span class="tag tag-research">Исследовательский</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 12k студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Дорого</span>
+                        <span><i class="fas fa-globe"></i> Английский</span>
+                    </div>
+                </a>
+
+                <a href="kbtu.html" class="university-card" data-category="state tech">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">КБТУ</div>
+                        <div class="uni-rating">8.2</div>
+                    </div>
+                    <h3 class="uni-name">КБТУ</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Алматы</p>
+                    <p class="uni-desc">Лучший технический вуз. Сильная нефтянка и IT. Связи с индустрией.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-tech">Технический</span>
+                        <span class="tag tag-oil">Нефтегаз</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 8k студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Средне</span>
+                        <span><i class="fas fa-wrench"></i> Практика</span>
+                    </div>
+                </a>
+
+                <div class="university-card" data-category="state">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">КазНУ</div>
+                        <div class="uni-rating">7.9</div>
+                    </div>
+                    <h3 class="uni-name">КазНУ им. Аль-Фараби</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Алматы</p>
+                    <p class="uni-desc">Крупнейший классический университет. Много направлений. Традиции.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-classic">Классический</span>
+                        <span class="tag tag-big">Крупный</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 20k+ студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Дёшево</span>
+                        <span><i class="fas fa-book"></i> Фундамент</span>
+                    </div>
+                </div>
+
+                <a href="iitu.html" class="university-card" data-category="private">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">МУИТ</div>
+                        <div class="uni-rating">7.5</div>
+                    </div>
+                    <h3 class="uni-name">МУИТ (Almaty Management)</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Алматы</p>
+                    <p class="uni-desc">Сильный бизнес-вуз. Современный подход. Карьерные возможности.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-business">Бизнес</span>
+                        <span class="tag tag-modern">Современный</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 5k студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Дорого</span>
+                        <span><i class="fas fa-briefcase"></i> Карьера</span>
+                    </div>
+                </a>
+
+                <div class="university-card" data-category="state human">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">ЕНУ</div>
+                        <div class="uni-rating">7.3</div>
+                    </div>
+                    <h3 class="uni-name">ЕНУ им. Гумилева</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Астана</p>
+                    <p class="uni-desc">Гуманитарный профиль. Сильные юристы и журналисты. Государственный.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-human">Гуманитарный</span>
+                        <span class="tag tag-law">Юриспруденция</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 15k студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Дёшево</span>
+                        <span><i class="fas fa-gavel"></i> Госслужба</span>
+                    </div>
+                </div>
+
+                <div class="university-card" data-category="tech state">
+                    <div class="uni-card-header">
+                        <div class="uni-logo">Сатпаев</div>
+                        <div class="uni-rating">8.0</div>
+                    </div>
+                    <h3 class="uni-name">КазНИТУ им. Сатпаева</h3>
+                    <p class="uni-location"><i class="fas fa-map-marker-alt"></i> Алматы</p>
+                    <p class="uni-desc">Технический гигант. Архитектура, горное дело, строительство.</p>
+                    <div class="uni-tags">
+                        <span class="tag tag-tech">Технический</span>
+                        <span class="tag tag-engineering">Инженерия</span>
+                    </div>
+                    <div class="uni-stats">
+                        <span><i class="fas fa-user-graduate"></i> 18k студентов</span>
+                        <span><i class="fas fa-dollar-sign"></i> Средне</span>
+                        <span><i class="fas fa-industry"></i> Индустрия</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="load-more">
+                <button class="btn btn-secondary">ПОКАЗАТЬ ЕЩЕ 20 УНИВЕРСИТЕТОВ <i class="fas fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <section id="rating" class="section rating-section">
+        <div class="container">
+            <h2 class="section-title"><span class="title-icon"><i class="fas fa-trophy"></i></span><span class="highlight">РЕЙТИНГ 2025</span></h2>
+            <p class="section-subtitle">Составлен на основе 100+ параметров и реальных отзывов студентов</p>
+            
+            <div class="rating-table">
+                <div class="table-header">
+                    <div class="col-rank">Место</div>
+                    <div class="col-uni">Университет</div>
+                    <div class="col-score">Общий балл</div>
+                    <div class="col-category">Категории</div>
+                    <div class="col-action"></div>
+                </div>
+                
+                <div class="table-row top-1">
+                    <div class="col-rank">1</div>
+                    <div class="col-uni">
+                        <div class="uni-name">Назарбаев Университет</div>
+                        <div class="uni-location">Астана</div>
+                    </div>
+                    <div class="col-score">
+                        <div class="score-value">9.8</div>
+                        <div class="score-bar"><div class="score-fill" style="width: 98%"></div></div>
+                    </div>
+                    <div class="col-category">
+                        <span class="category-tag">Исследовательский</span>
+                        <span class="category-tag">Международный</span>
+                    </div>
+                    <div class="col-action">
+                        <a href="nu.html" class="btn btn-small">АНАЛИЗ</a>
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="col-rank">2</div>
+                    <div class="col-uni">
+                        <div class="uni-name">КБТУ</div>
+                        <div class="uni-location">Алматы</div>
+                    </div>
+                    <div class="col-score">
+                        <div class="score-value">8.2</div>
+                        <div class="score-bar"><div class="score-fill" style="width: 82%"></div></div>
+                    </div>
+                    <div class="col-category">
+                        <span class="category-tag">Технический</span>
+                        <span class="category-tag">Нефтегаз</span>
+                    </div>
+                    <div class="col-action">
+                        <a href="#" class="btn btn-small">АНАЛИЗ</a>
+                    </div>
+                </div>
+
+                <div class="table-row">
+                    <div class="col-rank">3</div>
+                    <div class="col-uni">
+                        <div class="uni-name">МУИТ</div>
+                        <div class="uni-location">Алматы</div>
+                    </div>
+                    <div class="col-score">
+                        <div class="score-value">7.5</div>
+                        <div class="score-bar"><div class="score-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="col-category">
+                        <span class="category-tag">Бизнес</span>
+                        <span class="category-tag">Частный</span>
+                    </div>
+                    <div class="col-action">
+                        <a href="#" class="btn btn-small">АНАЛИЗ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo-icon"><i class="fas fa-graduation-cap"></i></span>
+                        <span class="logo-text">Kegros<span class="logo-highlight">KZ</span></span>
+                    </a>
+                    <p>Единственная полная база университетов Казахстана с реальной информацией для абитуриентов.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Разделы</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="#universities">Все университеты</a></li>
+                        <li><a href="#rating">Рейтинг 2025</a></li>
+                        <li><a href="#about">О проекте</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Мы в соцсетях</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p>Присоединяйтесь к сообществу абитуриентов!</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 KegrosKZ — Агрегатор университетов Казахстана. Все данные обновляются ежедневно.</p>
+                <p>Это неофициальный проект. Мы предоставляем аналитику и реальные отзывы.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
